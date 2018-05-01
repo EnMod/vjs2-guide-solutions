@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>02 - Using VueJS to interact with the DOM</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<!-- {{ templates }} work like EJS: 
+			anything between the braces is rendered,
+			be it a method return or a property
+
+			but only if the rendered thing can be output in the DOM
+			so basically returned strings
+		-->
+		<!-- v-once: directive that only changes an element's child props once 
+			if they would be changed multiple times 
+		-->
+		<h1 v-once>{{ title }}</h1>
+		<p>{{ sayHello() }} -
+
+			<!-- VueJS doesn't mess with your native HTML attributes,
+				like below:
+				<a href="{{ link }}"></a>
+				
+				so you need VueJS attributes to have VueJS manipulate,
+				aka directives
+
+				v-bind is a directive that binds a value to the element,
+				which allows you to pass in Vue data directly, no {{}}
+			-->
+			<a v-bind:href="link"></a>
+			<!-- Like EJS, VueJS escapes HTML on render
+				Once you've sanitized, making sure the HTML is safe to inject,
+				you can inject the HTML into an element using v-html
+
+				think of it as <%= %> in EJS, but thrown into the element
+				on which the directive lives, as opposed to just being thrown
+				into the DOM as in Twine games
+			-->
+			<p v-html="HTMLlink"></p>
+		</p>
+	</div>
+	<script src="app.js"></script>
+
+</body>
+
+</html>

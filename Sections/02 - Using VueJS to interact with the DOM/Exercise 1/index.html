@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="exercise">
+    <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+    <p>Name: {{ name }}
+      <br> Age: {{ age }}</p>
+
+    <!-- 2) Output your age, multiplied by 3 -->
+    <p>Age x3: {{ ageXThree() }}</p>
+
+    <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+    <p>Random float: {{ randFloat() }} </p>
+
+    <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+    <div>
+      <img v-bind:src="googleImage" style="width:100px;height:100px">
+    </div>
+
+    <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+    <div>
+      <input v-bind:value="name" type="text">
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#exercise',
+      data: {
+        name: 'Noel',
+        age: 28,
+        googleImage: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Mount_Everest_as_seen_from_Drukair2.jpg'
+      },
+      methods: {
+        ageXThree: function () {
+          return this.age * 3
+        },
+        randFloat: function () {
+          // toFixed added to make the number less annoyingly big
+          return Math.random().toFixed(2)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

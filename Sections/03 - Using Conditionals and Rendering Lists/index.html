@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<!-- use v-if to conditionally include 
+			elements and their children in the DOM 
+			
+			!important: elements hidden this way are REMOVED FROM THE DOM
+		-->
+		<p v-if="show">You can see me!</p>
+
+		<!-- v-else and v-else-if work just like VanillaJS -->
+		<p v-else>Now you can see me!</p>
+
+		<!-- v-show="data": sets a style="display:none;" on element
+			if `data` returns true
+		-->
+		<p v-show="show">Do you also see me?</p>
+
+		<!-- wrap elements in a <template></template> if you want them to
+			be grouped, but not have their wrapper in the DOM
+		-->
+		<template>
+			<h1>We're grouped!</h1>
+			<p>Within a template tag! Any directives affect this group as if it was nested within any other tag</p>
+		</template>
+
+		<!-- VueJS toggles, in case you don't know by now,
+			are done like this:
+			
+			@event="toggleData = !toggleData"
+		-->
+		<button @click="show = !show"></button>
+
+	</div>
+	<script src="app.js"></script>
+</body>
+
+</html>

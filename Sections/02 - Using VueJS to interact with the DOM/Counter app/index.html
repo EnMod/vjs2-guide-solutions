@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>02 - Using VueJS to interact with the DOM - Counter app</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<!-- @ is short for `v-on` -->
+		<!-- this increments or decrements the count 
+			when the buttons are clicked
+
+			you can add arguments through () as normal
+		
+			<button @click="decrement(decrementor)">-{{ decrementor }}</button>
+			<button @click="increment(incrementor)">+{{ incrementor }}</button> 
+			
+			or just straight up apply the change inline if it's a one-liner
+		-->
+		<button @click="count -= decrementor">-{{ decrementor }}</button>
+		<button @click="count += incrementor">+{{ incrementor }}</button>
+		<p>Count: {{ count }}</p>
+		<p>Result status: {{ resultStatus() }} | {{ result }}</p>
+
+		<!-- updates mouse coordinate values on mousemove,
+			but because the mousemove is set as the v-on of this particular p,
+			it only fires on events detected on this particular p
+
+			NOTE: you can't pass the event object `e` in your directives,
+			VueJS creates one called $event; use that 
+		-->
+		<p @mousemove="updateCoords($event)">
+			Mouse coords: {{ mouseX }}/{{ mouseY }}
+			<!-- to do common event canceling behavior,
+				either use a function that does it
+				
+				<span @mousemove="stopFunction">DEAD ZONE THAT DOESN'T FIRE @MOUSEMOVE</span>
+				
+				or straight up add `.stop` or `.prevent` modifiers to the `v-on`
+				this will add e.stopPropagation() or e.preventDefault(), respectively 
+			-->
+			<span @mousemove.stop="">DEAD ZONE THAT DOESN'T FIRE @MOUSEMOVE</span>
+		</p>
+		<!-- fires alertMe on keyUp within this input 
+			
+			accepts modifiers to single out which keys/events to fire on
+
+			clik dat link for a full list: https://vuejs.org/v2/guide/events.html#Key-Modifiers
+		-->
+		<input type="text" @keyup.up="alertMe" placeholder="type here for alerts">
+
+		<!-- v-model: two-way binds the value of this element 
+			to something in the data model
+			
+			in this case, binding the value 'nickname' to what's entered into the input
+		-->
+		<input type="text" v-model="nickname" placeholder="type here to change nickname">
+		<p>{{ nickname }}</p>
+
+	</div>
+	<script src="app.js"></script>
+
+</body>
+
+</html>

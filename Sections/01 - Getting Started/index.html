@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>01 - Getting Started</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!-- the VueJS render point -->
+  <div id="app">
+
+    <!-- Attributes with `v-` are directives: 
+      special attributes VueJS uses to manipulate the DOM
+
+      they accept args by "binding" them using :
+
+      Below, the "v-on" directive takes an event as argument,
+      and has the `input` event bound to it. In the quotes is what VueJS
+      method is expected to fire when that event happens. think of it like:
+
+      vue.addEventListener('input', changeText)
+    -->
+    <input type="text" v-on:input="changeText">
+
+    <!-- {{ templates }} indicate places for VueJS to render items
+      using either the `data` object or any defined `methods`
+    -->
+    <p>{{ text }}</p>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

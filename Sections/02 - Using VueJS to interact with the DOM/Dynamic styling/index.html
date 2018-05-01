@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <!-- on click, toggle redActive -->
+    <!-- bind the value of redActive to the existence of the class `red` on the element
+      when redActive is true, the class `red` will be toggled on, on the element
+
+      <div class="demo" @click="redActive = !redActive" :class="{'red': redActive}"></div>
+
+      that's fine but what if that class object needs more than that?
+
+      computed props work for that
+
+      <div class="demo" @click="redActive = !redActive" :class="activeClasses"></div>
+      
+      BUT what if you just wanna assign a class to the div based on
+      what was done with that div???
+
+      v-model an input
+
+      <input type="text" v-model="activeClass">
+      <div class="demo" :class="activeClass"></div>
+      
+      or use @click to change the val to the right thing
+
+      fun fact: you can write arrays of bound values
+
+      <div class="demo" @click="activeClass = 'red'" :class="[activeClass, value]"></div>
+
+      BUT LIKE WHAT IF I JUST WANT TO CHANGE THE STYLE WITHOUT USING A CLASS THO?????
+
+      bind the style value to a data value, 
+      or set up the CSS as an object altogether in your JS
+    -->
+
+    <div class="demo" @click="activeClass = 'red'" :class="[activeClass, value]"></div>
+    <div class="demo" @click="activeClass = 'green'" :class="activeClass"></div>
+    <div class="demo" @click="activeClass = 'blue'" :class="activeClass"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
